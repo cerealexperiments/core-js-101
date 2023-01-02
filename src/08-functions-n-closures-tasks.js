@@ -24,6 +24,7 @@
  *
  */
 function getComposition(f, g) {
+  // eslint-disable-next-line func-names
   return function (x) {
     return f(g(x));
   };
@@ -47,6 +48,7 @@ function getComposition(f, g) {
  *
  */
 function getPowerFunction(exponent) {
+  // eslint-disable-next-line func-names
   return function (x) {
     return x ** exponent;
   };
@@ -87,6 +89,7 @@ function getPolynom() {
  */
 function memoize(func) {
   const cache = new Map();
+  // eslint-disable-next-line func-names
   return function (...args) {
     const key = JSON.stringify(args);
     if (cache.has(key)) {
@@ -115,11 +118,13 @@ function memoize(func) {
  * retryer() => 2
  */
 function retry(func, attempts) {
+  // eslint-disable-next-line func-names
   return function (...args) {
     for (let i = 0; i < attempts; i += 1) {
       try {
         return func(...args);
       } catch (error) {
+        // eslint-disable-next-line no-console
         console.error('Retrying');
       }
     }
@@ -160,6 +165,7 @@ function logger(/* func, logFunc */) {
  * Return the function with partial applied arguments
  *
  * @param {Function} fn
+ * @param args1
  * @return {Function}
  *
  * @example
@@ -170,6 +176,7 @@ function logger(/* func, logFunc */) {
  *   partialUsingArguments(fn, 'a','b','c','d')() => 'abcd'
  */
 function partialUsingArguments(fn, ...args1) {
+  // eslint-disable-next-line func-names
   return function (...moreArgs) {
     return fn(...args1, ...moreArgs);
   };
